@@ -31,36 +31,42 @@
                 <input asp-for="DateJoined" class="form-control" />
                 <span asp-validation-for="DateJoined" class="text-danger"></span>
             </div>
-            <div class="form-group">
-            <label class="control-label">Membership</label>
-            <div class="col-md-offset-2 col-md-10">
-                <table>
-                    <tr>
-                        @{
-                            int cnt = 0;
-                            List<ClubGolf.ViewModels.AssignedMembershipData> memberships = ViewBag.MembershipTypes;
-
-                            foreach (var membership in memberships)
-                            {
-                                if (cnt++ % 3 == 0)
-                                {
-                                    @:</tr><tr>
-                                }
-                                @:<tr><td>
-                                    <input type="checkbox"
-                                           name="selectedMemberships"
-                                           value="@membership.MembershipTypeId"
-                                           @(Html.Raw(membership.Assigned ? "checked=\"checked\"" : "")) />
-                                           @membership.membershipType.Description
-                                @:</td></tr>
-                            }
-                            @:</tr>
+                        <table class="table">
+                <tr>
+                    <th>Membership</th>
+                    <th>Annual Cost</th>
+                    <th></th>
+                </tr>
+                @{
+                    int cnt = 0;
+                    List<ClubGolf.ViewModels.AssignedMembershipData> memberships = ViewBag.MembershipTypes;
+                
+                    foreach (var membership in memberships)
+                    {
+                        if (cnt++ % 3 == 0)
+                        {
+                            @:</tr><tr>
                         }
-                </table>
-            </div>
-        </div>
+                        <tr class="tr_style">
+                            <td>
+                                @Html.DisplayFor(modelItem => membership.membershipType.Description)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => membership.membershipType.AnnualCost)
+                            </td>
+                            <td align="right">
+                                    <input type="checkbox" 
+                                                name="selectedMemberships"
+                                                value="@membership.MembershipTypeId"
+                                                @(Html.Raw(membership.Assigned ? "checked=\"checked\"" : "")) />
+                                               
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
