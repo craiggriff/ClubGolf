@@ -144,7 +144,7 @@ namespace ClubGolf.Controllers
                 {
                     if (!personMemberships.Contains(membershiptype.MembershipTypeId))
                     {
-                        personToUpdate.Memberships.Add(new Membership { PersonId = personToUpdate.PersonId, MembershipTypeId = membershiptype.MembershipTypeId });
+                        personToUpdate.Memberships.Add(new Membership { PersonId = personToUpdate.PersonId, MembershipTypeId = membershiptype.MembershipTypeId ,StartDate = DateTime.Now,EndDate = DateTime.Now.AddYears(1),AnnualCost=membershiptype.AnnualCost,MonthlyCost=membershiptype.AnnualCost/12,MembershipActive=true});
                     }
                 }
                 else

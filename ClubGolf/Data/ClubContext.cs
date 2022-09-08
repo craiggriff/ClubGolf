@@ -14,9 +14,6 @@ namespace ClubGolf.Data
         public DbSet<Person> Persons { get; set; }
 
 
-
-
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             var decimalProps = modelBuilder.Model

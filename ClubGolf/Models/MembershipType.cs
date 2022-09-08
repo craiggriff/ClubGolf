@@ -14,7 +14,7 @@ namespace ClubGolf.Models
         [Required]
         [DataType(DataType.Currency)]
         [Display(Name = "Annual Cost")]
-        public decimal? AnnualCost { get; set; }
+        public decimal AnnualCost { get; set; }
         public ICollection<Membership>? Memberships { get; set; }
     }
 }
