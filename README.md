@@ -1,5 +1,5 @@
 # ClubGolf
-ASP Golfing club management
+ASP.NET Golfing club management
 
 
 
